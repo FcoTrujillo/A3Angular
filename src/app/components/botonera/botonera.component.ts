@@ -18,24 +18,31 @@ export class BotoneraComponent {
 
   router = inject(Router);
 
-  async deleteUser(_id: string) {
-    let confirmacion = confirm('¿Estás seguro de que quieres eliminar al usuario : ' + _id + '?');
+  deleteUser(_id: string): void {
+    const confirmacion = confirm('¿Estás seguro de que quieres eliminar al usuario con ID: ' + _id + '?');
     if (confirmacion) {
-      try {
-        let response = await this.userService.deleteUser(_id).toPromise();
-        if (response) {
-          alert('Se ha borrado correctamente el usuario con ID: ' + _id);
-          if (this.parent === 'view') {
-            this.router.navigate(['/home']);
-          } else if (this.parent === 'card') {
-            location.reload(); // Recargar la página si estamos en una tarjeta
+      this.userService.deleteUser(_id).subscribe({
+        next: (response) => {
+
+          if (response !== null && response !== undefined) {
+            alert('Se ha borrado correctamente el usuario con ID: ' + _id);
+            if (this.parent === 'view') {
+              this.router.navigate(['/home']);
+            } else if (this.parent === 'card') {
+              location.reload();
+            }
+          } else {
+            alert('La respuesta no es válida, verifique la operación.');
           }
+        },
+        error: (error) => {
+          alert('Error al borrar el usuario: ' + error);
         }
-      } catch (error) {
-        alert('Error al borrar el usuario: ' + error);
-      }
+      });
     }
   }
+  
+  
 
   viewDetail(_id: string) {
     this.router.navigate(['/user', _id]);

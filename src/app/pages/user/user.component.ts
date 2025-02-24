@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { BotoneraComponent } from '../../components/botonera/botonera.component';
 import { User } from '../../interfaces/User';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [BotoneraComponent],
+  imports: [BotoneraComponent, RouterLink],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })
@@ -19,16 +19,17 @@ export class UserComponent {
 
   miUser!: User;
 
-/*
+
   ngOnInit(): void {
-    const _id = this.route.snapshot.paramMap.get('_id');
+    const _id = this.activatedRoute.snapshot.paramMap.get('_id');
     if (_id) {
       this.userService.getById(_id).subscribe((data: User) => {
-        this.user = data;
+        this.miUser = data;
       });
     }
   }
 }
-*/
 
-}
+
+
+
