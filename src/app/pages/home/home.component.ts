@@ -16,7 +16,7 @@ import { Page } from '../../interfaces/Page';
 export class HomeComponent implements OnInit{
 
   arrUsers: User[] = [];
-  page: number = 0;
+  actualPage: number = 0;
   totalPages: number = 1;
   perPage: number = 9;
 
@@ -42,4 +42,21 @@ getUsers(): void {
   });
 }
 
+getPages(): number[] {
+  const pages: number[] = [];
+  for (let i = 1; i <= this.totalPages; i++) {
+    pages.push(i);
+  }
+  return pages;
 }
+
+changePage(page: number): void {
+  if (page >= 1 && page <= this.totalPages) {
+    this.actualPage = page;
+    this.getUsers();
+  }
+}
+
+}
+
+

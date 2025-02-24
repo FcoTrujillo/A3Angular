@@ -1,8 +1,7 @@
-<div class="card">
+<div class="card ">
     <img [src]="miUser.image" class="card-img-top" alt="{{ miUser.first_name }}">
     <div class="card-body">
       <h5 class="card-title">{{ miUser.first_name }} {{ miUser.last_name }}</h5>
-      <p class="card-text">{{ miUser.email }}</p>
       <app-botonera [_id]="miUser._id" [parent]="'card'"></app-botonera>
     </div>
   </div>

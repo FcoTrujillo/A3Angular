@@ -1,5 +1,12 @@
-<div class="btn-group" role="group">
+<div class="btn-group mt-2" role="group">
+
+  @if (parent == 'card') {
     <button (click)="viewDetail(_id)" class="btn btn-primary">Ver Detalle</button>
-    <button (click)="updateUser(_id)" class="btn btn-warning">Actualizar</button>
-    <button (click)="deleteUser(_id)" class="btn btn-danger">Borrar</button>
-  </div>
+  }
+  <button (click)="updateUser(_id)" class="btn btn-warning">Actualizar</button>
+  <button (click)="deleteUser(_id)" class="btn btn-danger">Borrar</button>
+
+  @if (parent == 'view') {
+    <button (click)="router.navigate(['/home'])" class="btn btn-secondary">Volver al listado</button>
+  }
+</div>

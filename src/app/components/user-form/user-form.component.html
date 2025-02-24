@@ -1,1 +1,55 @@
-<p>user-form works!</p>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="card p-4 shadow">
+          <h2 class="text-center mb-4">
+            {{ updateMode ? 'Actualizar' : 'Crear Usuario' }}
+          </h2>
+  
+          <div class="mb-3">
+            <label for="first_name" class="form-label">Nombre de usuario:</label>
+            <input id="first_name" formControlName="first_name" class="form-control" />
+            @if (userForm.get('first_name')?.invalid && userForm.get('first_name')?.touched) {
+              <div class="text-danger">
+                Este campo es obligatorio.
+              </div>
+            }
+          </div>
+  
+          <div class="mb-3">
+            <label for="last_name" class="form-label">Apellido de usuario:</label>
+            <input id="last_name" formControlName="last_name" class="form-control" />
+            @if (userForm.get('last_name')?.invalid && userForm.get('last_name')?.touched) {
+              <div class="text-danger">
+                Este campo es obligatorio.
+              </div>
+            }
+          </div>
+  
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input id="email" formControlName="email" type="email" class="form-control" />
+            @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+              <div class="text-danger">
+                Este campo es obligatorio.
+              </div>
+            }
+          </div>
+  
+          <div class="mb-3">
+            <label for="image" class="form-label">Imagen (URL):</label>
+            <input id="image" formControlName="image" class="form-control" />
+            @if (userForm.get('image')?.invalid && userForm.get('image')?.touched) {
+              <div class="text-danger">
+                Este campo es obligatorio.
+              </div>
+            }
+          </div>
+ 
+          <button type="submit" class="btn btn-primary w-100" [disabled]="userForm.invalid">
+            {{ updateMode ? 'Actualizar' : 'Crear Usuario' }}
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>

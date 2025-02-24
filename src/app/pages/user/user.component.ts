@@ -7,7 +7,7 @@ import { UserService } from '../../services/user.service';
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [BotoneraComponent, RouterLink],
+  imports: [BotoneraComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css'
 })

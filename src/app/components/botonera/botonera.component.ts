@@ -49,7 +49,7 @@ export class BotoneraComponent {
   }
 
   updateUser(_id: string) {
-    this.router.navigate(['/updateuser', _id]);
+    this.router.navigate(['update/user', _id]);
   }
 }
 
